@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { ListItemProps } from './NumericList/NumericListProps';
+import NumericList from './NumericList/NumericList';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [items, setItems] = useState<ListItemProps[]>([
+        {
+            id: 'item1',
+            value: 0,
+            label: 'Item 1',
+            description: 'This is item 1',
+            max: 100
+        },
+        {
+            id: 'item2',
+            value: 0,
+            label: 'Item 2',
+            description: 'This is item 2',
+            min: 0,
+            max: 100
+        },
+        {
+            id: 'item3',
+            value: 0,
+            label: 'Item 3',
+            description: 'This is item 3',
+            min: 0,
+            max: 100
+        },
+    ]);
+
+    return (
+        <div className='App'>
+            <NumericList
+                enableSearch={true}
+                enableScrollbar={true}
+                items={items}
+                onChange={(items) => {
+                    setItems(items);
+                }}
+            />
+        </div>
+    );
 }
 
 export default App;
