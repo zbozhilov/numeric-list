@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
-import { ListItemProps } from './NumericList/NumericListProps';
 import NumericList from './NumericList/NumericList';
+import { ListItemProps } from './NumericList/NumericListProps';
 
 function App() {
     const [items, setItems] = useState<ListItemProps[]>([
