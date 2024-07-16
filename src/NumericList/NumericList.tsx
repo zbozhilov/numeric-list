@@ -25,9 +25,9 @@ const MaybeScrollbar = (props: {
             const hasVerticalScroll = container.scrollHeight > container.clientHeight;
 
             if (hasVerticalScroll) {
-                container.classList.add('zb-num-list-scroll-scollable');
+                container.classList.add('zb-num-list-scroll-scrollable');
             } else {
-                container.classList.remove('zb-num-list-scroll-scollable');
+                container.classList.remove('zb-num-list-scroll-scrollable');
             }
 
         });
