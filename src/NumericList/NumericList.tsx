@@ -5,7 +5,7 @@ import './style/NumericList.scss';
 import ListItems from './ListItems';
 import { useRef, useEffect } from 'react';
 
-const WithMaybeScrollbar = (props: {
+const MaybeScrollbar = (props: {
     maxHeight: number;
     enableScrollbar: boolean;
     children: React.ReactNode;
@@ -72,7 +72,7 @@ const NumericList = (props: ListProps) => {
                 />
             )}
 
-            <WithMaybeScrollbar
+            <MaybeScrollbar
                 enableScrollbar={props.enableScrollbar}
                 maxHeight={props.maxHeight || 340}
             >
@@ -87,7 +87,7 @@ const NumericList = (props: ListProps) => {
                         props.onChange(items);
                     }}
                 />
-            </WithMaybeScrollbar>
+            </MaybeScrollbar>
         </div>
     );
 };
