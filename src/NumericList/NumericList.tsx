@@ -3,16 +3,46 @@ import Search from './Search';
 import React, { useState } from 'react';
 import './style/NumericList.scss';
 import ListItems from './ListItems';
+import { useRef, useEffect } from 'react';
 
 const WithMaybeScrollbar = (props: {
     maxHeight: number;
     enableScrollbar: boolean;
     children: React.ReactNode;
 }) => {
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+
+        if (!containerRef.current) {
+            return;
+        }
+
+        const container = containerRef.current;
+
+        const resizeObserver = new ResizeObserver(() => {
+
+            const hasVerticalScroll = container.scrollHeight > container.clientHeight;
+
+            if (hasVerticalScroll) {
+                container.classList.add('zb-num-list-scroll-scollable');
+            } else {
+                container.classList.remove('zb-num-list-scroll-scollable');
+            }
+
+        });
+
+        resizeObserver.observe(container);
+
+        return () => {
+            resizeObserver.disconnect();
+        };
+    }, []);
 
     if (props.enableScrollbar) {
         return (
             <div
+                ref={containerRef}
                 className='zb-num-list-scroll'
                 style={{
                     maxHeight: props.maxHeight,
@@ -47,8 +77,11 @@ const NumericList = (props: ListProps) => {
                 maxHeight={props.maxHeight || 340}
             >
                 <ListItems
-                    items={items.filter(test => {
-                        return test.label.toLowerCase().includes(search.toLowerCase());
+                    enableInput={props.enableInput}
+                    items={items.filter((test) => {
+                        return test.label
+                            .toLowerCase()
+                            .includes(search.toLowerCase());
                     })}
                     onChange={(items) => {
                         props.onChange(items);

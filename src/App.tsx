@@ -10,31 +10,45 @@ function App() {
             value: 0,
             label: 'Item 1',
             description: 'This is item 1',
-            max: 100
+            max: 10,
         },
         {
             id: 'item2',
             value: 0,
             label: 'Item 2',
             description: 'This is item 2',
-            min: 0,
-            max: 100
+            max: 10,
         },
         {
             id: 'item3',
             value: 0,
             label: 'Item 3',
             description: 'This is item 3',
-            min: 0,
-            max: 100
+            max: 10,
+        },
+        {
+            id: 'item4',
+            value: 0,
+            label: 'Item 4',
+            description: 'This is item 4',
+            max: 10,
+        },
+        {
+            id: 'item5',
+            value: 0,
+            label: 'Item 5',
+            description: 'This is item 5',
+            max: 10,
         },
     ]);
 
     return (
         <div className='App'>
             <NumericList
+                maxHeight={280}
                 enableSearch={true}
                 enableScrollbar={true}
+                enableInput={true}
                 items={items}
                 onChange={(items) => {
                     setItems(items);

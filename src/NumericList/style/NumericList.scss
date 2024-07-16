@@ -1,9 +1,11 @@
-$containerBorderRadius: 20px;
-$spacing: 16px;
+$vericalSpacing: 16px;
+$controlButtonSize: 36px;
+$inputWidth: 80px;
+$plainValueWidth: 40px;
 
 .zb-num-list {
     background-color: #fff;
-    border-radius: $containerBorderRadius;
+    border-radius: 20px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -31,21 +33,21 @@ $spacing: 16px;
         gap: 40px;
 
         &:not(:first-child) {
-            margin-top: $spacing;
-            border-top:1px solid rgba(0, 0, 0, 0.1);
-            padding-top: $spacing;
+            margin-top: $vericalSpacing;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: $vericalSpacing;
             box-sizing: border-box;
         }
 
         &-label {
-            color:#202020;
+            color: #202020;
             font-size: 16px;
             font-weight: 500;
             line-height: 1.2;
         }
 
         &-description {
-            color:#202020;
+            color: #202020;
             font-size: 14px;
             font-weight: 400;
             line-height: 1.6;
@@ -54,8 +56,13 @@ $spacing: 16px;
         &-control {
             display: grid;
             align-items: center;
-            grid-template-columns: 40px 80px 40px;
+            grid-template-columns: $controlButtonSize $inputWidth $controlButtonSize;
             gap: 20px;
+
+            &-no-input {
+                grid-template-columns: $controlButtonSize $plainValueWidth $controlButtonSize;
+                gap: 10px;
+            }
 
             &-inc,
             &-dec {
@@ -70,14 +77,14 @@ $spacing: 16px;
                     border-color: #202020;
                     background-color: #202020;
                     i {
-                        color:#fff;
+                        color: #fff;
                     }
                 }
 
                 i {
                     color: #202020;
                     font-size: 12px;
-                    line-height: 38px;
+                    line-height: $controlButtonSize - 2px;
                 }
             }
 
@@ -87,12 +94,20 @@ $spacing: 16px;
                     padding: 0;
                     font-size: 16px;
                     border-radius: 12px;
-                    line-height: 38px;
+                    line-height: $controlButtonSize - 2px;
                     color: #202020;
                     text-align: center;
                     border: 1px solid #ddd;
                     background-color: #f0f0f0;
                     width: 100%;
+                }
+
+                &-value {
+                    font-size: 18px;
+                    line-height: $controlButtonSize - 2px;
+                    font-weight: 400;
+                    color: #202020;
+                    text-align: center;
                 }
             }
         }
@@ -101,7 +116,15 @@ $spacing: 16px;
     &-scroll {
         overflow-y: auto;
 
-        margin-top: $spacing;
+        margin-top: $vericalSpacing;
+
+        &-scollable {
+
+            .zb-num-list-items {
+                padding-right: 20px;
+            }
+
+        }
 
         &:empty {
             margin-top: 0;
@@ -129,45 +152,3 @@ $spacing: 16px;
         }
     }
 }
-
-// &-section {
-//     &-header {
-//         display: flex;
-//         justify-content: flex-start;
-//         align-items: center;
-//         gap: $spacing;
-//         padding-bottom: $spacing;
-
-//         &-title {
-//             font-size: 16px;
-//             font-weight: 500;
-//             color: $sectionTextColor;
-//         }
-
-//         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-//     }
-
-//     &-options {
-//         padding-left: $optionsIndent;
-
-//         &-option {
-//             display: flex;
-//             justify-content: flex-start;
-//             align-items: center;
-//             gap: $spacing;
-//             margin-top: $spacing;
-
-//             &-title {
-//                 font-size: 14px;
-//                 font-weight: 400;
-//                 color: $optionsTextColor;
-//             }
-//         }
-//     }
-
-//     &:not(:last-child) {
-//         margin-bottom: $spacing;
-//     }
-
-//     margin-top: $sectionSpacing;
-// }

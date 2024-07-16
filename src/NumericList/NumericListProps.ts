@@ -3,7 +3,6 @@ export interface ListItemProps {
     value: number;
     label: string;
     description?: string;
-    min?: number;
     max?: number;
 }
 
@@ -12,5 +11,6 @@ export interface ListProps {
     enableSearch: boolean;
     enableScrollbar: boolean;
     maxHeight?: number;
+    enableInput?: boolean;
     onChange: (items: ListItemProps[]) => void;
 }

@@ -1,13 +1,14 @@
-import React from 'react';
-import { ListItemProps } from './NumericListProps';
 import Item from './Item';
+import { ListItemProps } from './NumericListProps';
 
 const ListItems = ({
     items,
+    enableInput,
     onChange
 }: {
     items: ListItemProps[];
     onChange: (items: ListItemProps[]) => void;
+    enableInput?: boolean;
 }) => {
 
     if (!items.length) {
@@ -21,6 +22,7 @@ const ListItems = ({
                     <Item
                         key={item.id}
                         item={item}
+                        enableInput={enableInput}
                         onChange={(item) => {
                             const newItems = [...items];
                             newItems[index] = item;
